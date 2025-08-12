@@ -22,7 +22,7 @@ void main(void) {
             TH0 = 0xFC;
             TL0 = 0x66;
 
-            // Alternate digits every 1 ms
+            // Alternate digits every 1 ms for time division multiplexing .
             if (currentDigit == 0) {
                 displayDigit(number / 10, 2); // Tens
                 currentDigit = 1;
