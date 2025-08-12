@@ -1,0 +1,66 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              07/29/2025 23:41:53 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Users\mohan\AppData\Local\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEX
+                    -TEND PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          
+   4          
+   5          void config()
+   6          {
+   7   1          TMOD = 0x01;   // Timer0 Mode1 (16-bit)
+   8   1          TH0 = 0x3C;
+   9   1          TL0 = 0xB0;
+  10   1          TR0 = 1;       // Start timer
+  11   1      }
+  12          
+  13          
+  14          void main() 
+  15          {
+  16   1        unsigned int program_count = 0;
+  17   1        int duty_cycle = 1;
+  18   1        config();
+  19   1        
+  20   1      
+  21   1          while (1) 
+  22   1            {
+  23   2              if (TF0) 
+  24   2                {
+  25   3                  TF0 = 0;      // Clear overflow flag
+  26   3                  
+  27   3                  
+  28   3                  
+  29   3                  for(program_count = 0; program_count < duty_cycle; program_count++)
+  30   3                  {
+  31   4                    P2 = 0xFF;    // Toggle P1.0
+  32   4                  }
+  33   3                  for(program_count = 0; program_count < (100 - duty_cycle); program_count++)
+  34   3                  {
+  35   4                    P2 = 0x00;
+  36   4                  }
+  37   3                  
+  38   3                  TH0 = 0x3C;
+  39   3                  TL0 = 0xB0;
+  40   3                }
+  41   2            }
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     82    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

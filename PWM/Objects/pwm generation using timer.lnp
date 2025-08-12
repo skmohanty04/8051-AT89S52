@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\pwm generation using timer" 
+PRINT(".\Listings\pwm generation using timer.m51") RAMSIZE(256) 

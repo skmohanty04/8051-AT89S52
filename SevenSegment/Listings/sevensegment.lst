@@ -1,0 +1,54 @@
+C51 COMPILER V9.60.7.0   SEVENSEGMENT                                                      08/12/2025 19:28:31 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SEVENSEGMENT
+OBJECT MODULE PLACED IN .\Objects\sevensegment.obj
+COMPILER INVOKED BY: C:\Users\mohan\AppData\Local\Keil_v5\C51\BIN\C51.EXE sevensegment.c OPTIMIZE(8,SPEED) BROWSE DEBUG 
+                    -OBJECTEXTEND PRINT(.\Listings\sevensegment.lst) TABS(2) OBJECT(.\Objects\sevensegment.obj)
+
+line level    source
+
+   1          
+   2          #include<reg51.h>
+   3          
+   4          #include <reg51.h>
+   5          
+   6          // Common cathode 7-seg patterns for 0–9
+   7          // Adjust these values to match your wiring
+   8          unsigned char segPatterns[10] = {
+   9              0x40, // 0
+  10              0x79, // 1
+  11              0x24, // 2
+  12              0x30, // 3
+  13              0x19, // 4
+  14              0x12, // 5
+  15              0x02, // 6
+  16              0x78, // 7
+  17              0x00, // 8
+  18              0x10  // 9
+  19          };
+  20          
+  21          // Generic function: digitNum = 1 or 2
+  22          void displayDigit(unsigned char value, unsigned char digitNum) {
+  23   1          if (value > 9) return; // Invalid
+  24   1      
+  25   1          P1 = segPatterns[value];    // Segment pattern
+  26   1          if (digitNum == 1)
+  27   1              P0 = 0x02; // Enable first digit
+  28   1          else
+  29   1              P0 = 0x01; // Enable second digit
+  30   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     24    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

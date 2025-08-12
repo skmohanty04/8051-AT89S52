@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\blinky using timer" 
+PRINT(".\Listings\blinky using timer.m51") RAMSIZE(256) 
